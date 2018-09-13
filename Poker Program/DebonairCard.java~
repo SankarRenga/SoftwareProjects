@@ -1,0 +1,166 @@
+//Poker Card Game Card Class
+//Prgrammed by: Guha and Sankar
+//1/8/2015
+//Card Class
+import hsa.Console;
+import java.awt.*;
+import java.io.*;        
+import javax.imageio.*;  
+
+public class DebonairCard
+{
+  static Console c;
+  private String suitArray[] = new String[] {"S","H","D","C"};
+  private String valueArray[] = new String[] {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+  private String debonairSuit;
+  private String debonairValue;
+  private Image img;
+  private Image img2;
+  private Image img3;
+  private Image img4;
+  
+  public DebonairCard(String x,String y)
+  {
+    debonairValue = y;
+    debonairSuit= x;
+  }
+  
+  public String printValue()
+  {
+    String x;
+    x = debonairValue + debonairSuit;
+    return x;
+  }
+  
+  public int cardValue ()
+  {
+    int value = 0;
+    
+    if (debonairValue.equals ("2"))
+    {
+      value = 2;      
+    }
+    else if (debonairValue.equals ("3"))
+    {
+      value = 3;     
+    }
+    else if (debonairValue.equals ("4"))
+    {
+      value = 4;      
+    }
+    else if (debonairValue.equals ("5"))
+    {
+      value = 5;      
+    }
+    else if (debonairValue.equals ("5"))
+    {
+      value = 5;      
+    }
+    else if (debonairValue.equals ("6"))
+    {
+      value = 6;      
+    }
+    else if (debonairValue.equals ("7"))
+    {
+      value = 7;      
+    }
+    else if (debonairValue.equals ("8"))
+    {
+      value = 8;      
+    }
+    else if (debonairValue.equals ("9"))
+    {
+      value = 9;     
+    }
+    else if (debonairValue.equals ("10"))
+    {
+      value = 10;      
+    }
+    else if (debonairValue.equals ("J"))
+    {
+      value = 11;      
+    }
+    else if (debonairValue.equals ("Q"))
+    {
+      value = 12;      
+    }
+    else if (debonairValue.equals ("K"))
+    {
+      value = 13;      
+    }
+    else if (debonairValue.equals ("A"))
+    {
+      value = 14;      
+    }
+    return value;
+  }
+      
+  public String getSuit()
+  {
+    return debonairSuit;
+  }
+  
+  public void displayCard(Console c,int x,int y)
+  {
+     try
+   {
+      
+      img = ImageIO.read(new File("Heart.png"));
+      img2 = ImageIO.read(new File("Diamond.png"));
+      img3 = ImageIO.read(new File("Spades.png"));
+      img4 = ImageIO.read(new File("Clovers.png"));
+    }
+    catch(IOException e)  //File not found
+    {
+      img = null;
+      img2 = null;
+      img3 = null;
+      img4 = null;
+    }
+    if (debonairSuit.equals("H"))
+    {
+      c.setColor(Color.RED);  
+      c.drawRect(x,y,50,75); 
+      c.drawString(debonairValue,x+2,y+10);
+      c.drawString(debonairSuit,x+2,y+20);
+      c.drawImage(img,x+4,y+20,null);
+      c.drawString(debonairValue,x+40,y+75);
+      c.drawString(debonairSuit,x+43,y+63);
+    }
+    
+    else if (debonairSuit.equals("D"))
+    {
+      c.setColor(Color.RED);  
+      c.drawRect(x,y,50,75); 
+      c.drawString(debonairValue,x+2,y+10);
+      c.drawString(debonairSuit,x+2,y+20);
+      c.drawImage(img2,x+6,y+20,null);
+      c.drawString(debonairValue,x+40,y+75);
+      c.drawString(debonairSuit,x+43,y+63);
+    }
+        
+    else if (debonairSuit.equals("S"))
+    {
+      c.setColor(Color.BLACK);  
+      c.drawRect(x,y,50,75); 
+      c.drawString(debonairValue,x+2,y+10);
+      c.drawString(debonairSuit,x+2,y+20);
+      c.drawImage(img3,x+4,y+20,null);
+      c.drawString(debonairValue,x+40,y+75);
+      c.drawString(debonairSuit,x+43,y+63);
+    }
+    
+    else if (debonairSuit.equals("C"))
+    {
+      c.setColor(Color.BLACK);  
+      c.drawRect(x,y,50,75); 
+      c.drawString(debonairValue,x+2,y+10);
+      c.drawString(debonairSuit,x+2,y+20);
+      c.drawImage(img4,x+4,y+20,null);
+      c.drawString(debonairValue,x+40,y+75);
+      c.drawString(debonairSuit,x+43,y+63);
+    }
+    
+  }
+}
+

@@ -1,0 +1,17 @@
+import hsa.Console;
+import java.io.*;
+public class DebonairImage
+{
+  static Console c;
+  public static void main (String [] args) throws IOException
+  {
+    c = new Console  ( );
+    BufferedReader sentenceReader;
+    sentenceReader = new BufferedReader (new FileReader("DebonairLogo.png"));
+    String line = sentenceReader.readLine();
+    while(line != null)
+    {
+     c.println(sentenceReader.readLine()); 
+    }
+  }
+}

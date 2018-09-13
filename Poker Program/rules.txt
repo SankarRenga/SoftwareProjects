@@ -1,0 +1,31 @@
+Glossary of terms:
+Check: Player continues his/her turn with no bet or raise
+Flop: The first three cards dealt
+Showdown: When players reveal their hands to determine the winner
+Fold: Pass for the round
+Check: No bet on your turn continue to next player
+Raise: Add more money onto the present bet
+Call: Agree to a raise or bet placed
+
+Poker Hands:
+Royal Flush:	 	
+A straight from a ten to an ace with all five cards of the same suit. In Debonair poker all suits are ranked equally.
+Straight Flush:	 	
+Any straight with all five cards of the same suit.
+Four of a Kind:	 	
+Any four cards of the same rank. If two players share the same Four of a Kind (on the board), 
+the bigger fifth card determines the winner
+Full House:	 	
+Any three cards of the same rank together with any two cards of the same rank. 
+Flush:	 	
+Any five cards of the same suit (not consecutive). The highest card of the five determines the rank of the flush.
+Straight:	 	
+Any five consecutive cards of different suits. Aces can count as either a high or a low card.
+Three of a Kind	 	
+Any three cards of the same rank. 
+Two Pair:	 	
+Any two cards of the same rank together with another two cards of the same rank. 
+One Pair:	 	
+Any two cards of the same rank. 
+High Card:	 	
+Any hand that is not mentioned above.
