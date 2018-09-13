@@ -1,1 +1,4 @@
-2XB3 Final Project - Chicago Food Inspector
+Software Projects
+-Poker Program
+-Trigonometric Calculator
+-Chicago Food Inspector
