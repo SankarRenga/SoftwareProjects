@@ -1,0 +1,173 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class BaseGraphGUI extends JPanel
+{
+  private TrigGraph graph;
+  private DrawGraph drawFunction;
+  
+  private JButton operationSin = new JButton("Sin");
+  private JButton operationCos = new JButton("Cos");
+  private JButton operationTan = new JButton("Tan");
+  private JButton inverseButton = new JButton("Inverse");
+  
+  private JButton showA = new JButton("Show A");
+  private JButton showK = new JButton("Show K");
+  private JButton showP = new JButton("Show P");
+  private JButton showQ = new JButton("Show Q");
+  private JButton getCoordinates = new JButton("Get Coordinates");
+  
+  private JSlider aValue = new JSlider(-10,10);  
+  private JSlider kValue = new JSlider(-10,10);
+  private JSlider pValue = new JSlider(-10,10);
+  private JSlider qValue = new JSlider(-10,10);
+  private JLabel function = new JLabel ();
+  
+  public BaseGraphGUI (TrigGraph newCalculator)
+  {
+    super();
+    this.graph = newCalculator;
+    this.graph.setGUI(this);
+    this.drawFunction = new DrawGraph(this.graph);
+    this.initialLayout();
+    this.registerControllers();
+    this.update();
+  }
+  
+  public void initialLayout()
+  {
+    JPanel operationChooser = new JPanel();
+    operationChooser.setBackground(new Color(171,255,235));
+    operationChooser.add(operationSin);
+    operationChooser.add(operationCos);
+    operationChooser.add(operationTan);
+    operationChooser.add(inverseButton);
+    operationChooser.setBorder(BorderFactory.createTitledBorder("Operation"));
+    
+    JPanel baseTrans = new JPanel();
+    baseTrans.setBorder(BorderFactory.createTitledBorder("Function: " + this.function.getText()));
+    baseTrans.add (drawFunction);
+    drawFunction.setVisible(false);
+    
+    JPanel transformPanel = new JPanel();
+    this.aValue.setPaintLabels(true);
+    this.aValue.setLabelTable(aValue.createStandardLabels(5));
+    this.kValue.setPaintLabels(true);
+    this.kValue.setLabelTable(kValue.createStandardLabels(5));
+    this.pValue.setPaintLabels(true);
+    this.pValue.setLabelTable(pValue.createStandardLabels(5));
+    this.qValue.setPaintLabels(true);
+    this.qValue.setLabelTable(qValue.createStandardLabels(5));
+    transformPanel.setBackground(new Color(171,255,235));
+    transformPanel.add (showA);
+    transformPanel.add (aValue);
+    transformPanel.add (showK);
+    transformPanel.add (kValue);
+    transformPanel.add (showP);
+    transformPanel.add (pValue);
+    transformPanel.add (showQ);
+    transformPanel.add (qValue);
+    transformPanel.add (getCoordinates);
+    transformPanel.setBorder(BorderFactory.createTitledBorder("Transform"));
+    
+    JPanel centre = new JPanel();
+    centre.setLayout(new GridLayout(1,2));
+    centre.add(baseTrans);
+    
+    JPanel bot = new JPanel();
+    bot.setLayout(new GridLayout(1,2));
+    bot.add(transformPanel);
+    
+    this.setLayout(new BorderLayout());
+    this.add(operationChooser, BorderLayout.NORTH);
+    this.add(centre, BorderLayout.CENTER);
+    this.add(bot, BorderLayout.SOUTH);
+  }
+  
+  private void registerControllers()
+  {
+    TransformationsController controller = new TransformationsController(this.graph, this.operationSin, this.operationCos, this.operationTan, this.inverseButton,this.showA,this.showK,this.showP,this.showQ,this.getCoordinates);
+    this.inverseButton.addActionListener(controller);
+    this.operationSin.addActionListener(controller);
+    this.operationCos.addActionListener(controller);
+    this.operationTan.addActionListener(controller);
+    this.showA.addActionListener(controller);
+    this.showK.addActionListener(controller);
+    this.showP.addActionListener(controller);
+    this.showQ.addActionListener(controller);
+    this.getCoordinates.addActionListener(controller);
+    SliderController slider = new SliderController(this.graph, this.aValue, this.kValue, this.pValue, this.qValue);
+    this.aValue.addChangeListener(slider);
+    this.kValue.addChangeListener(slider);
+    this.pValue.addChangeListener(slider);
+    this.qValue.addChangeListener(slider);
+  } 
+  
+  public void update()
+  {
+    String a;
+    String k;
+    String p;
+    String q;
+    if (this.graph.getAValue() == 0 || this.graph.getKValue() == 0)
+    {
+      this.function.setText("f(x) = 0");
+    }
+    else
+    {
+      if (this.graph.getAValue() == 1)
+      {
+        a = "";
+      }
+      else
+      {
+        a = "" + this.graph.getAValue();
+      }
+      
+      if (this.graph.getKValue() == 1)
+      {
+        k = "";
+      }
+      else
+      {
+        k = "" + this.graph.getKValue();
+      }
+      
+      if (this.graph.getPValue() == 0)
+      {
+        p = "";
+      }
+      else
+      {
+        if (this.graph.getPValue() > 0)
+        {
+          p = " - " + this.graph.getPValue();
+        }
+        else
+        {
+          p = " + " + this.graph.getPValue();
+        }
+      }
+      
+      if (this.graph.getQValue() == 0)
+      {
+        q = "";
+      }
+      else
+      {
+        if (this.graph.getQValue() > 0)
+        {
+          q = " + " + this.graph.getQValue();
+        }
+        else
+        {
+          q = " - " + this.graph.getQValue();
+        }
+      }
+      this.function.setText ("f(x) = " + a + "sin" + "(" + k + "(x " + p + ")) " + q);
+    } 
+    this.initialLayout();
+    this.drawFunction.setVisible (true);
+    this.drawFunction.repaint();
+  }
+}

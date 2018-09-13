@@ -1,0 +1,30 @@
+import javax.swing.*;
+
+public class GetCoordinateGUI extends JPanel
+{
+  private TrigGraph graph;
+  private JTextField xInput = new JTextField(5);
+  private JLabel yOutput;
+  
+  public GetCoordinateGUI (TrigGraph newGraph)
+  {
+    super();
+    this.graph = newGraph;
+    this.graph.setGUI(this);
+    this.createLayout();
+    this.registerControllers();
+  }
+  
+  public void createLayout()
+  {
+    JPanel coordinateFinderPanel = new JPanel ();
+    coordinateFinderPanel.setBorder(BorderFactory.createTitledBorder("Input X-Coordinate: "));
+    yOutput = new JLabel("      Y Value: " + this.graph.getYValue());
+    this.add(xInput);
+    this.add(yOutput);
+  }
+  
+  private void registerControllers()
+  {
+  }
+}

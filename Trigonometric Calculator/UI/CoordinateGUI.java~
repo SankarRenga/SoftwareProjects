@@ -1,0 +1,38 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class CoordinateGUI extends JPanel
+{
+  private TrigGraph calculator;
+  private DrawGraph graph;
+  public TransformationsGUI (TrigGraph newGraph)
+  {
+    super();
+    this.calculator = newGraph;
+    this.calculator.setGUI(this);
+    this.createLayout();
+  }
+  
+  public void createLayout()
+  {
+    BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+    
+    JPanel aTrans = new JPanel();
+    aTrans.setBorder(BorderFactory.createTitledBorder("A transformation"));  
+    
+    JPanel kTrans = new JPanel();
+    kTrans.setBorder(BorderFactory.createTitledBorder("K transformation"));
+ 
+    JPanel pTrans = new JPanel();
+    pTrans.setBorder(BorderFactory.createTitledBorder("P transformation"));
+    
+    JPanel qTrans = new JPanel();
+    qTrans.setBorder(BorderFactory.createTitledBorder("Q transformation"));
+    
+    this.setLayout(boxLayout);
+    this.add(aTrans);
+    this.add(kTrans);
+    this.add(pTrans);
+    this.add(qTrans);    
+  }
+}
